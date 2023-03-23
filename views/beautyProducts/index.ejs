@@ -10,7 +10,9 @@
     <h1>Here are all my beautyProducts!</h1>
     <hr>
     <% for (let i = 0 ; i < beautyProducts.length ; i++) { %>
-        <h2>Name: <%= beautyProducts[i].name %></h2>
+        <a href="/beautyProducts/<%= i %>">
+            <h2>Name: <%= beautyProducts[i].name %></h2>
+        </a>
         <h2>Brand: <%= beautyProducts[i].brand %></h2>
         <h2>Price: &<%= beautyProducts[i].price %></h2>
         <hr>
