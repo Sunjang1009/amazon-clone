@@ -1,0 +1,16 @@
+<%- include('../header.ejs') %>
+<body>
+    <h1>Here are all my kids books!</h1>
+    <hr>
+    <% for (let i = 0 ; i < kidsBooks.length ; i++) { %>
+        <a href="/kidsBooks/<%= i %>">
+            <h2>Title: <%= kidsBooks[i].title %></h2>
+        </a>
+        <h2>Author: <%= kidsBooks[i].author %></h2>
+        <h2>Price: $<%= kidsBooks[i].price %></h2>
+        <a href="/kidsBooks/<%= i %>/edit">Edit This Item</a>
+        <a href="/kidsBooks/<%= i %>/delete">Delete This Item</a>
+        <hr>
+    <% } %>
+</body>
+</html>

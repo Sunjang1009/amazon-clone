@@ -7,6 +7,7 @@ const vitaminsControllers = require('./controllers/vitamins');
 const methodOverride = require('method-override');
 
 app.set('view engine','ejs');
+//ejs form to req.body
 app.use(express.urlencoded({extended:false}));
 
 
