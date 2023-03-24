@@ -32,6 +32,18 @@ router.put('/kidsBooks/:id',(req,res)=>{
     res.redirect('/kidsBooks');
 });
 
+router.get('/kidsBooks/:id/delete',(req,res)=>{
+    const kidsBookToBeDeleted = kidsBooks[req.params.id]
+    res.render('kidsBooks/delete.ejs',{kidsBookToBeDeleted, idx:req.params.id});
+});
+
+router.delete('/kidsBooks/:id',(req,res)=>{
+    kidsBooks.splice(req.params.id,1);
+    res.redirect('/kidsBooks');
+});
+
+
+
 
 
 
