@@ -1,0 +1,14 @@
+<%- include('../header.ejs') %>
+    <h1>Please edit this item</h1>
+    <form action="/kidsBooks/<%= idx %>?_method=PUT" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" name="title" id="title" value="<%= kidsBookToBeEdited.title %>">
+        <br>
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author" value="<%= kidsBookToBeEdited.author %>">
+        <br>
+        <label for="price">Price:</label>
+        <input type="text" name="price" id="price" value="<%= kidsBookToBeEdited.price %>">
+        <br>
+        <input type="submit" value="Submit Change">
+    </form>

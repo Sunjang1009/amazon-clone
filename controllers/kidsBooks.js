@@ -21,5 +21,18 @@ router.post('/kidsBooks',(req,res)=>{
     res.redirect('/kidsBooks');
 });
 
+router.get('/kidsBooks/:id/edit',(req,res)=>{
+    const kidsBookToBeEdited = kidsBooks[req.params.id]
+    res.render('kidsBooks/edit.ejs' ,{kidsBookToBeEdited, idx:req.params.id});
+});
+
+router.put('/kidsBooks/:id',(req,res)=>{
+    const editedKidBook = req.body;
+    kidsBooks[req.params.id] = editedKidBook;
+    res.redirect('/kidsBooks');
+});
+
+
+
 
 module.exports = router;
