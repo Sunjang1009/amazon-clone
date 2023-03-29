@@ -9,13 +9,13 @@ const methodOverride = require('method-override');
 app.set('view engine','ejs');
 //ejs form to req.body
 app.use(express.urlencoded({extended:false}));
+app.use(methodOverride('_method'));
 
 
 app.get('/',(req,res)=>{
     res.render('home.ejs')
 });
 
-app.use(methodOverride('_method'));
 
 app.use('/beautyProducts', beautyProductsControllers);
 app.use('', kidsBooksControllers);

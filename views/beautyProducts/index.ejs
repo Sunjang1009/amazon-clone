@@ -3,7 +3,7 @@
     <h1>Here are all my beautyProducts!</h1>
     <hr>
     <% for (let i = 0 ; i < beautyProducts.length ; i++) { %>
-        <a href="/beautyProducts/<%= i %>">
+        <a href="/beautyProducts/<%= beautyProducts[i]._id %>">
             <h2>Name: <%= beautyProducts[i].name %></h2>
         </a>
         <h2>Brand: <%= beautyProducts[i].brand %></h2>

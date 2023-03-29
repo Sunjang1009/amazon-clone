@@ -1,0 +1,16 @@
+<%- include('../header.ejs') %>
+    <h1>Here are all my vitamins</h1>
+    <hr>
+    <% for (let i = 0 ; i < vitamins.length ; i++ ) { %>
+        <a href="">
+            
+        </a>
+        <h2>Name: <%= vitamins[i].name %></h2>
+        <h2>Brand: <%= vitamins[i].brand %></h2>
+        <h2>Price: $<%= vitamins[i].price %></h2>
+        <a href="/vitamins/<% i %>/edit">Edit this item</a>
+        <a href="/vitamins/<% i %>/delete">Delete this item</a>
+        <hr>
+    <% } %>
+</body>
+</html>

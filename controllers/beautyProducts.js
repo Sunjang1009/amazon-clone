@@ -1,24 +1,44 @@
 const express = require('express');
 const router = express.Router();
-const beautyProducts = require('../models/BeautyProducts');
+//mongoose connected Object
+const { beautyProducts } = require('../models/index');
 
-router.get('',(req,res)=>{
-    res.render('beautyProducts/index.ejs', {beautyProducts});
+router.get('', async(req,res,next)=>{
+    try {
+        const myBeautyProducts = await beautyProducts.find({})
+        console.log(myBeautyProducts);
+        res.render('beautyProducts/index.ejs', {beautyProducts: myBeautyProducts});
+    } catch(err){
+        console.log(err)
+        next();
+    }
 });
 
 router.get('/new',(req,res)=>{
     res.render('beautyProducts/new.ejs');
 });
 
-router.get('/:id',(req,res)=>{
-    const beautyProduct = beautyProducts[req.params.id];
-    res.render('beautyProducts/show.ejs', {beautyProduct})
+router.get('/:id', async(req,res,next)=>{
+    try{
+        const myBeautyProduct = await beautyProducts.findById(req.params.id);
+        res.render('beautyProducts/show.ejs', {beautyProduct: myBeautyProduct})
+    } catch(err){
+        console.log(err);
+        next();
+    }
 })
 
-router.post('',(req,res)=>{
-    console.log(req.body);
-    beautyProducts.push(req.body);
-    res.redirect(`/${beautyProducts.length-1}`);
+router.post('', async (req,res,next)=>{
+    try{
+        const newBeautyProduct = beautyProducts.create(req.body);
+        console.log(newBeautyProduct);
+        // beautyProducts.push(req.body);
+        res.redirect('/beautyProducts');
+
+    } catch(err){
+        console.log(err)
+        next()
+    }
 });
 
 router.get('/:id/edit',(req,res)=>{
